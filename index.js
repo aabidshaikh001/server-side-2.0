@@ -22,19 +22,19 @@ app.use(express.json())
   //api end point
   app.use('/api',router)
 // --------deployment---------------
-const _dirname1 = path.resolve()
-if(process.env.NODE_ENV==='production'){
-    app.use(express.static(path.join(_dirname1,"/build")));
-    app.get("*",(req,res)=>{
-         res.sendFile(path.resolve(_dirname1, "build", "index.html"))
-    })
+// const _dirname1 = path.resolve()
+// if(process.env.NODE_ENV==='production'){
+//     app.use(express.static(path.join(_dirname1,"/build")));
+//     app.get("*",(req,res)=>{
+//          res.sendFile(path.resolve(_dirname1, "build", "index.html"))
+//     })
 
-}
-else{
-    app.get('/',(req,res)=>{
-        res.send('API is Running SuccessFully')
-    })
-}
+// }
+// else{
+//     app.get('/',(req,res)=>{
+//         res.send('API is Running SuccessFully')
+//     })
+// }
 // --------deployment---------------
 
     
