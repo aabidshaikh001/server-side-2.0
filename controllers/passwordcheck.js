@@ -7,6 +7,11 @@ async function checkPassword(req, res) {
     try {
         const { password, userId } = req.body;
 
+        // Check if userId is provided and valid
+        if (!userId) {
+            return res.status(400).json(new ApiError("User ID is required"));
+        }
+
         // Fetch user by userId
         const user = await User.findById(userId);
         if (!user) {
@@ -32,6 +37,7 @@ async function checkPassword(req, res) {
         const cookiesOption = {
             httpOnly: true,  // Prevent client-side access
             secure: process.env.NODE_ENV === 'production',  // Secure only in production (HTTPS)
+            sameSite: 'strict' // Enhance security against CSRF
         };
 
         // Send token in cookie
@@ -43,6 +49,7 @@ async function checkPassword(req, res) {
 
     } catch (error) {
         // Handle errors and send proper response
+        console.error("Error in checkPassword:", error); // Log the error for debugging
         return res.status(500).json(new ApiError("Server error", error.message || error));
     }
 }
