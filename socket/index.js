@@ -23,7 +23,7 @@ app.use(cors({
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+        origin: process.env.FRONTEND_URL || 'https://client-side-2-0.vercel.app',
         credentials: true,
     },
 });
