@@ -3,7 +3,7 @@ import express from 'express';
 import { Server } from 'socket.io';
 import http from 'http';
 import getuserDetailsfromtoken from '../helper/getuserDetails.js';
-import { User } from './modal/user.modal.js';
+import { User } from '../modal/user.modal.js';
 import { Conversation, Message } from '../modal/conversation.modal.js';
 import dotenv from 'dotenv';
 import cors from 'cors';
